@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.krx.mapper.EtfMapper">
+<resultMap id="EtfMap" type="com.krx.dto.EtfDTO">
+<id property="id" column="id"/><result property="baseDate" column="base_date"/><result property="ticker" column="ticker"/>
+<result property="etfName" column="etf_name"/><result property="closingPrice" column="closing_price"/>
+<result property="priceChange" column="price_change"/><result property="changeRate" column="change_rate"/>
+<result property="estimatedNav" column="estimated_nav"/><result property="netAssetTotal" column="net_asset_total"/>
+<result property="tradingVolume" column="trading_volume"/><result property="tradingValue" column="trading_value"/>
+<result property="underlyingIndex" column="underlying_index"/>
+</resultMap>
+<select id="selectAll" resultMap="EtfMap">SELECT * FROM etf_info ORDER BY base_date DESC,id DESC</select>
+<select id="selectById" parameterType="long" resultMap="EtfMap">SELECT * FROM etf_info WHERE id=#{id}</select>
+<insert id="insert" parameterType="com.krx.dto.EtfDTO" useGeneratedKeys="true" keyProperty="id">
+INSERT INTO etf_info(base_date,ticker,etf_name,closing_price,price_change,change_rate,estimated_nav,net_asset_total,trading_volume,trading_value,underlying_index)
+VALUES(#{baseDate},#{ticker},#{etfName},#{closingPrice},#{priceChange},#{changeRate},#{estimatedNav},#{netAssetTotal},#{tradingVolume},#{tradingValue},#{underlyingIndex})
+</insert>
+<update id="update" parameterType="com.krx.dto.EtfDTO">
+UPDATE etf_info SET base_date=#{baseDate},ticker=#{ticker},etf_name=#{etfName},closing_price=#{closingPrice},price_change=#{priceChange},
+change_rate=#{changeRate},estimated_nav=#{estimatedNav},net_asset_total=#{netAssetTotal},trading_volume=#{tradingVolume},
+trading_value=#{tradingValue},underlying_index=#{underlyingIndex} WHERE id=#{id}
+</update>
+</mapper>
