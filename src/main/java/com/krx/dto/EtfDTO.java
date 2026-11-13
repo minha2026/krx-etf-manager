@@ -2,114 +2,124 @@ package com.krx.dto;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class EtfDTO {
     private Long id;
     private Date baseDate;
     private String ticker;
     private String etfName;
-    private Long closingPrice;
-    private Long priceChange;
+    private BigDecimal closingPrice;
+    private BigDecimal priceChange;
     private BigDecimal changeRate;
     private BigDecimal estimatedNav;
     private BigDecimal netAssetTotal;
     private Long tradingVolume;
-    private Long tradingValue;
+    private BigDecimal tradingValue;
     private String underlyingIndex;
+    private Timestamp createdAt;
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long v) {
-        id = v;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Date getBaseDate() {
         return baseDate;
     }
 
-    public void setBaseDate(Date v) {
-        baseDate = v;
+    public void setBaseDate(Date baseDate) {
+        this.baseDate = baseDate;
     }
 
     public String getTicker() {
         return ticker;
     }
 
-    public void setTicker(String v) {
-        ticker = v;
+    public void setTicker(String ticker) {
+        this.ticker = ticker;
     }
 
     public String getEtfName() {
         return etfName;
     }
 
-    public void setEtfName(String v) {
-        etfName = v;
+    public void setEtfName(String etfName) {
+        this.etfName = etfName;
     }
 
-    public Long getClosingPrice() {
+    public BigDecimal getClosingPrice() {
         return closingPrice;
     }
 
-    public void setClosingPrice(Long v) {
-        closingPrice = v;
+    public void setClosingPrice(BigDecimal closingPrice) {
+        this.closingPrice = closingPrice;
     }
 
-    public Long getPriceChange() {
+    public BigDecimal getPriceChange() {
         return priceChange;
     }
 
-    public void setPriceChange(Long v) {
-        priceChange = v;
+    public void setPriceChange(BigDecimal priceChange) {
+        this.priceChange = priceChange;
     }
 
     public BigDecimal getChangeRate() {
         return changeRate;
     }
 
-    public void setChangeRate(BigDecimal v) {
-        changeRate = v;
+    public void setChangeRate(BigDecimal changeRate) {
+        this.changeRate = changeRate;
     }
 
     public BigDecimal getEstimatedNav() {
         return estimatedNav;
     }
 
-    public void setEstimatedNav(BigDecimal v) {
-        estimatedNav = v;
+    public void setEstimatedNav(BigDecimal estimatedNav) {
+        this.estimatedNav = estimatedNav;
     }
 
     public BigDecimal getNetAssetTotal() {
         return netAssetTotal;
     }
 
-    public void setNetAssetTotal(BigDecimal v) {
-        netAssetTotal = v;
+    public void setNetAssetTotal(BigDecimal netAssetTotal) {
+        this.netAssetTotal = netAssetTotal;
     }
 
     public Long getTradingVolume() {
         return tradingVolume;
     }
 
-    public void setTradingVolume(Long v) {
-        tradingVolume = v;
+    public void setTradingVolume(Long tradingVolume) {
+        this.tradingVolume = tradingVolume;
     }
 
-    public Long getTradingValue() {
+    public BigDecimal getTradingValue() {
         return tradingValue;
     }
 
-    public void setTradingValue(Long v) {
-        tradingValue = v;
+    public void setTradingValue(BigDecimal tradingValue) {
+        this.tradingValue = tradingValue;
     }
 
     public String getUnderlyingIndex() {
         return underlyingIndex;
     }
 
-    public void setUnderlyingIndex(String v) {
-        underlyingIndex = v;
+    public void setUnderlyingIndex(String underlyingIndex) {
+        this.underlyingIndex = underlyingIndex;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
 }

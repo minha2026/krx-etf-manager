@@ -3,37 +3,51 @@ package com.krx.dao;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import com.krx.config.MyBatisConfig;
 import com.krx.dto.EtfDTO;
 
 public class EtfDAOImpl implements EtfDAO {
-    private static final String NS = "com.krx.mapper.EtfMapper.";
+    private final SqlSessionFactory factory = MyBatisConfig.getSqlSessionFactory();
 
-    public List<EtfDTO> selectAll() {
-        try (SqlSession s = MyBatisConfig.getFactory().openSession()) {
-            return s.selectList(NS + "selectAll");
+    @Override
+    public List<EtfDTO> selectEtfList() {
+        try (SqlSession session = factory.openSession()) {
+            return session.selectList("EtfMapper.selectEtfList");
         }
     }
 
-    public EtfDTO selectById(long id) {
-        try (SqlSession s = MyBatisConfig.getFactory().openSession()) {
-            return s.selectOne(NS + "selectById", id);
+    @Override
+    public EtfDTO selectEtfById(long id) {
+        try (SqlSession session = factory.openSession()) {
+            return session.selectOne("EtfMapper.selectEtfById", id);
         }
     }
 
-    public int insert(EtfDTO d) {
-        try (SqlSession s = MyBatisConfig.getFactory().openSession()) {
-            int n = s.insert(NS + "insert", d);
-            s.commit();
-            return n;
+    @Override
+    public int insertEtf(EtfDTO etf) {
+        try (SqlSession session = factory.openSession()) {
+            int result = session.insert("EtfMapper.insertEtf", etf);
+            session.commit();
+            return result;
         }
     }
 
-    public int update(EtfDTO d) {
-        try (SqlSession s = MyBatisConfig.getFactory().openSession()) {
-            int n = s.update(NS + "update", d);
-            s.commit();
-            return n;
+    @Override
+    public int updateEtf(EtfDTO etf) {
+        try (SqlSession session = factory.openSession()) {
+            int result = session.update("EtfMapper.updateEtf", etf);
+            session.commit();
+            return result;
+        }
+    }
+
+    @Override
+    public int deleteEtf(long id) {
+        try (SqlSession session = factory.openSession()) {
+            int result = session.delete("EtfMapper.deleteEtf", id);
+            session.commit();
+            return result;
         }
     }
 }

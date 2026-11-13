@@ -5,11 +5,13 @@ import java.util.List;
 import com.krx.dto.EtfDTO;
 
 public interface EtfDAO {
-    List<EtfDTO> selectAll();
+    List<EtfDTO> selectEtfList();
 
-    EtfDTO selectById(long id);
+    EtfDTO selectEtfById(long id);
 
-    int insert(EtfDTO dto);
+    int insertEtf(EtfDTO etf);
 
-    int update(EtfDTO dto);
+    int updateEtf(EtfDTO etf);
+
+    int deleteEtf(long id);
 }

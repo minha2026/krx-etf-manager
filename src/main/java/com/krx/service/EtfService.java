@@ -5,11 +5,13 @@ import java.util.List;
 import com.krx.dto.EtfDTO;
 
 public interface EtfService {
-    List<EtfDTO> getList();
+    List<EtfDTO> getEtfList();
 
-    EtfDTO getOne(long id);
+    EtfDTO getEtf(long id);
 
-    int register(EtfDTO dto);
+    EtfDTO createEtf(EtfDTO etf);
 
-    int modify(EtfDTO dto);
+    boolean modifyEtf(long id, EtfDTO etf);
+
+    boolean removeEtf(long id);
 }
